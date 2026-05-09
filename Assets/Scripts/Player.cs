@@ -11,9 +11,12 @@ public class Player : MonoBehaviour
     public PlayerSpriteRenderer bigRenderer;
     private PlayerSpriteRenderer activeRenderer;
 
-    public bool big => bigRenderer.enabled;
+    private bool _isBig;
+    public bool big => _isBig;
     public bool dead => deathAnimation.enabled;
     public bool starpower { get; private set; }
+
+    private Coroutine scaleCoroutine;
 
     private void Awake()
     {
@@ -46,6 +49,7 @@ public class Player : MonoBehaviour
 
     public void Grow()
     {
+        _isBig = true;
         smallRenderer.enabled = false;
         bigRenderer.enabled = true;
         activeRenderer = bigRenderer;
@@ -53,11 +57,13 @@ public class Player : MonoBehaviour
         capsuleCollider.size = new Vector2(1f, 2f);
         capsuleCollider.offset = new Vector2(0f, 0.5f);
 
-        StartCoroutine(ScaleAnimation());
+        if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+        scaleCoroutine = StartCoroutine(ScaleAnimation());
     }
 
     public void Shrink()
     {
+        _isBig = false;
         smallRenderer.enabled = true;
         bigRenderer.enabled = false;
         activeRenderer = smallRenderer;
@@ -65,7 +71,8 @@ public class Player : MonoBehaviour
         capsuleCollider.size = new Vector2(1f, 1f);
         capsuleCollider.offset = new Vector2(0f, 0f);
 
-        StartCoroutine(ScaleAnimation());
+        if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+        scaleCoroutine = StartCoroutine(ScaleAnimation());
     }
 
     private IEnumerator ScaleAnimation()
@@ -89,6 +96,7 @@ public class Player : MonoBehaviour
         smallRenderer.enabled = false;
         bigRenderer.enabled = false;
         activeRenderer.enabled = true;
+        scaleCoroutine = null;
     }
 
     public void Starpower()

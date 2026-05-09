@@ -8,9 +8,11 @@ public class Pipe : MonoBehaviour
     public Vector3 enterDirection = Vector3.down;
     public Vector3 exitDirection = Vector3.zero;
 
+    private bool entering;
+
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (connection != null && other.CompareTag("Player"))
+        if (!entering && connection != null && other.CompareTag("Player"))
         {
             if (Input.GetKey(enterKeyCode) && other.TryGetComponent(out Player player)) {
                 StartCoroutine(Enter(player));
@@ -20,6 +22,7 @@ public class Pipe : MonoBehaviour
 
     private IEnumerator Enter(Player player)
     {
+        entering = true;
         player.movement.enabled = false;
 
         Vector3 enteredPosition = transform.position + enterDirection;
@@ -43,6 +46,7 @@ public class Pipe : MonoBehaviour
         }
 
         player.movement.enabled = true;
+        entering = false;
     }
 
     private IEnumerator Move(Transform player, Vector3 endPosition, Vector3 endScale)
