@@ -14,8 +14,9 @@ public class Koopa : MonoBehaviour
         {
             if (player.starpower) {
                 Hit();
-            } else if (collision.transform.DotTest(transform, Vector2.down)) {
-                EnterShell();
+            } else if (collision.transform.DotTest(transform, Vector2.down))
+            {
+                Hit();
             }  else {
                 player.Hit();
             }
