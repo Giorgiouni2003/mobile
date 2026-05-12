@@ -10,8 +10,9 @@ public class Goomba : MonoBehaviour
         {
             if (player.starpower) {
                 Hit();
-            } else if (collision.transform.DotTest(transform, Vector2.down)) {
-                Flatten();
+            } else if (collision.transform.DotTest(transform, Vector2.down))
+            {
+                Hit();
             } else {
                 player.Hit();
             }
