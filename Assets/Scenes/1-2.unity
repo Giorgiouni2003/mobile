@@ -7343,7 +7343,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 8049ea91a9d5fca4dab4024c0915dbe6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6286f87a892e2f34ab4786a47b616885, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7362,8 +7362,8 @@ Transform:
   m_GameObject: {fileID: 1586091687}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 110, y: -7.5, z: 0}
-  m_LocalScale: {x: 227, y: 18, z: 1}
+  m_LocalPosition: {x: 110, y: 8.7, z: 0}
+  m_LocalScale: {x: 7.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1642772125}
@@ -10624,16 +10624,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2938452933781992828, guid: 0321727fc4f2a09458753c8f9f0ac24d, type: 3}
       propertyPath: castle
-      value:
+      value: 
       objectReference: {fileID: 1768761168}
-    - target: {fileID: 2938452933781992828, guid: 0321727fc4f2a09458753c8f9f0ac24d, type: 3}
-      propertyPath: nextWorld
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2938452933781992828, guid: 0321727fc4f2a09458753c8f9f0ac24d, type: 3}
-      propertyPath: nextStage
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5491492890240609313, guid: 0321727fc4f2a09458753c8f9f0ac24d, type: 3}
       propertyPath: m_Sprite
       value: 
