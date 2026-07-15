@@ -41,17 +41,17 @@ public class GameManager : MonoBehaviour
         LoadLevel(1, 1);
     }
 
-    public void GameOver()
-    {
-        NewGame();
-    }
-
     public void LoadLevel(int world, int stage)
     {
         this.world = world;
         this.stage = stage;
 
         SceneManager.LoadScene($"{world}-{stage}");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void NextLevel()
@@ -67,13 +67,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetLevel()
     {
-        lives--;
-
-        if (lives > 0) {
-            LoadLevel(world, stage);
-        } else {
-            GameOver();
-        }
+        LoadMainMenu();
     }
 
     public void AddCoin()

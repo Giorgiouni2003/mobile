@@ -9,6 +9,7 @@ public class FlagPole : MonoBehaviour
     public float speed = 6f;
     public int nextWorld = 1;
     public int nextStage = 1;
+    public bool returnToMainMenu = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -32,7 +33,11 @@ public class FlagPole : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        GameManager.Instance.LoadLevel(nextWorld, nextStage);
+        if (returnToMainMenu) {
+            GameManager.Instance.LoadMainMenu();
+        } else {
+            GameManager.Instance.LoadLevel(nextWorld, nextStage);
+        }
     }
 
     private IEnumerator MoveTo(Transform subject, Vector3 position)
