@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public float musicVolume = 0.5f;
 
     private AudioSource musicSource;
+    private AudioSource sfxSource;
 
     private void Awake()
     {
@@ -32,6 +33,9 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = musicVolume;
         musicSource.playOnAwake = false;
         musicSource.Play();
+
+        sfxSource = gameObject.AddComponent<AudioSource>();
+        sfxSource.playOnAwake = false;
     }
 
     public void SetVolume(float volume)
@@ -40,6 +44,12 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = volume;
         PlayerPrefs.SetFloat(VolumePrefKey, volume);
         PlayerPrefs.Save();
+    }
+
+    public void PlaySfx(AudioClip clip, float volume = 1f)
+    {
+        if (clip == null) return;
+        sfxSource.PlayOneShot(clip, volume);
     }
 
 }

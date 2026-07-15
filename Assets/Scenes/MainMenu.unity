@@ -2481,6 +2481,7 @@ MonoBehaviour:
   settingsPanel: {fileID: 700172631}
   storyPanel: {fileID: 976278091}
   volumeSlider: {fileID: 1148453037}
+  volumeTickSound: {fileID: 8300000, guid: de167b9982980429a97b9c1693d5047d, type: 3}
 --- !u!4 &1901169553
 Transform:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 8f;
     public float maxJumpHeight = 5f;
     public float maxJumpTime = 1f;
+    public AudioClip jumpSound;
+    public AudioClip stompSound;
     public float jumpForce => (2f * maxJumpHeight) / (maxJumpTime / 2f);
     public float gravity => (-2f * maxJumpHeight) / Mathf.Pow(maxJumpTime / 2f, 2f);
 
@@ -103,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = jumpForce;
             jumping = true;
+            AudioManager.Instance.PlaySfx(jumpSound);
         }
     }
 
@@ -126,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 velocity.y = jumpForce / 2f;
                 jumping = true;
+                AudioManager.Instance.PlaySfx(stompSound);
             }
         }
         else if (collision.gameObject.layer != LayerMask.NameToLayer("PowerUp"))

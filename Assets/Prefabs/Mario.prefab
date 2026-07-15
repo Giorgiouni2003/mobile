@@ -104,6 +104,8 @@ MonoBehaviour:
   moveSpeed: 8
   maxJumpHeight: 5
   maxJumpTime: 1
+  jumpSound: {fileID: 8300000, guid: 16668fdeb762e46ac92e17859f490d7d, type: 3}
+  stompSound: {fileID: 8300000, guid: b8841404342234ec68d2be609d556052, type: 3}
 --- !u!114 &4805063566520083554
 MonoBehaviour:
   m_ObjectHideFlags: 0
