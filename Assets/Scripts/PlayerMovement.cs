@@ -77,8 +77,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HorizontalMovement()
     {
-        // Accelerate / decelerate
-        inputAxis = Input.GetAxis("Horizontal");
+        // Accelerate / decelerate (keyboard or on-screen touch buttons)
+        inputAxis = Mathf.Clamp(Input.GetAxis("Horizontal") + MobileInput.horizontal, -1f, 1f);
         velocity.x = Mathf.MoveTowards(velocity.x, inputAxis * moveSpeed, moveSpeed * Time.deltaTime);
 
         // Check if running into a wall
@@ -100,8 +100,8 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = Mathf.Max(velocity.y, 0f);
         jumping = velocity.y > 0f;
 
-        // Perform jump
-        if (Input.GetButtonDown("Jump"))
+        // Perform jump (keyboard or on-screen touch button)
+        if (Input.GetButtonDown("Jump") || MobileInput.ConsumeJumpDown())
         {
             velocity.y = jumpForce;
             jumping = true;
@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
     private void ApplyGravity()
     {
         // Check if falling
-        bool falling = velocity.y < 0f || !Input.GetButton("Jump");
+        bool falling = velocity.y < 0f || !(Input.GetButton("Jump") || MobileInput.jumpHeld);
         float multiplier = falling ? 2f : 1f;
 
         // Apply gravity and terminal velocity
