@@ -3,7 +3,9 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    public GameObject mainPanel;
     public GameObject settingsPanel;
+    public GameObject storyPanel;
     public Slider volumeSlider;
 
     private void Start()
@@ -11,9 +13,16 @@ public class MainMenuController : MonoBehaviour
         volumeSlider.value = AudioManager.Instance.musicVolume;
         volumeSlider.onValueChanged.AddListener(AudioManager.Instance.SetVolume);
         settingsPanel.SetActive(false);
+        storyPanel.SetActive(false);
     }
 
     public void Play()
+    {
+        mainPanel.SetActive(false);
+        storyPanel.SetActive(true);
+    }
+
+    public void StartGame()
     {
         GameManager.Instance.NewGame();
     }
